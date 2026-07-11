@@ -1,0 +1,16 @@
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Private keys
+*.key
+*.pem
+*.p12
+
+# Backup files
+backup/
+
+# VS Code workspace
+.vscode/
