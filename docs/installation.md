@@ -319,3 +319,61 @@ sudo ss -tulnp | grep 514
 ![Rsyslog Restart Status](../screenshots/phase-03/06-rsyslog-status-after-restart.png)
 
 ![Port 514 Listening](../screenshots/phase-03/07-port-514-listening.png)
+## Step 4: Configure Remote Log Storage
+
+A dedicated directory was created to store logs received by the centralized rsyslog server.
+
+### Create Log Directory
+
+```bash
+sudo mkdir -p /var/log/remote
+sudo chmod 755 /var/log/remote
+```
+
+### Configure Remote Log Template
+
+File:
+
+```bash
+/etc/rsyslog.d/remote.conf
+```
+
+Configuration:
+
+```conf
+$template RemoteLogs,"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log"
+
+*.* ?RemoteLogs
+& stop
+```
+
+### Permission Configuration
+
+```bash
+sudo chown -R syslog:adm /var/log/remote
+sudo chmod -R 755 /var/log/remote
+```
+
+### Verification
+
+```bash
+sudo systemctl restart rsyslog
+
+logger "Phase 3 remote log test"
+
+sudo find /var/log/remote -type f
+```
+
+### Expected Result
+
+- Rsyslog service running successfully.
+- Remote log directory created.
+- Logs stored based on hostname and program name.
+
+### Screenshots
+
+![Remote Log Directory](../screenshots/phase-03/08-remote-log-directory.png)
+
+![Rsyslog Final Status](../screenshots/phase-03/09-rsyslog-status-final.png)
+
+![Remote Log Test](../screenshots/phase-03/10-remote-log-test.png)
