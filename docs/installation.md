@@ -207,3 +207,21 @@ ping -c 4 google.com
 ## Status
 
 Completed
+
+## Screenshots
+
+### 1. VMware Virtual Machine Configuration
+
+![VM Settings](../screenshots/phase-02/01-vm-settings.png)
+
+### 2. Network Configuration (IP Address & Routing)
+
+![Network Configuration](../screenshots/phase-02/02-network-configuration.png)
+
+### 3. Connectivity Test
+
+![Connectivity Test](../screenshots/phase-02/03-connectivity-test.png)
+
+### 4. System Information
+
+![System Information](../screenshots/phase-02/04-system-information.png)
