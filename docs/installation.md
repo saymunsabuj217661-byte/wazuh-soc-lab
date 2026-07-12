@@ -470,3 +470,91 @@ sudo ss -tulnp | grep 514
 ✅ Ubuntu Server is fully prepared for Wazuh installation.
 
 The operating system has been updated successfully and the existing centralized rsyslog configuration remains operational.
+
+# Phase 5 – Download Wazuh Installation Assistant
+
+## Objective
+
+Download and prepare the Wazuh installation assistant for deploying the Wazuh platform.
+
+---
+
+## Step 1: Download the Installation Assistant
+
+### Command
+
+```bash
+cd ~
+
+curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
+```
+
+### Result
+
+The Wazuh installation assistant script was downloaded successfully.
+
+### Screenshot
+
+![Download Installation Script](../screenshots/phase-05/01-download-install-script.png)
+
+---
+
+## Step 2: Verify Download
+
+### Command
+
+```bash
+ls -lh wazuh-install.sh
+```
+
+### Result
+
+Verified that the installation script exists.
+
+### Screenshot
+
+![Verify Download](../screenshots/phase-05/02-verify-install-script.png)
+
+---
+
+## Step 3: Make the Script Executable
+
+### Commands
+
+```bash
+chmod +x wazuh-install.sh
+
+ls -l wazuh-install.sh
+```
+
+### Result
+
+Execution permission was successfully assigned.
+
+### Screenshot
+
+![Executable Permission](../screenshots/phase-05/03-script-executable.png)
+
+---
+
+## Step 4: Verify the Installation Assistant
+
+### Command
+
+```bash
+./wazuh-install.sh --help
+```
+
+### Result
+
+The installation assistant displayed the available deployment options successfully.
+
+### Screenshot
+
+![Installation Assistant Help](../screenshots/phase-05/04-install-script-help.png)
+
+---
+
+## Status
+
+✅ Wazuh Installation Assistant downloaded and verified successfully.
