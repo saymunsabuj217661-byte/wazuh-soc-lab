@@ -167,3 +167,43 @@ nothing to commit, working tree clean
 Status:
 - Successful
 
+# Phase 2 - Ubuntu Server Preparation
+
+## Objective
+
+Prepare the Ubuntu Server virtual machine for Wazuh SIEM deployment.
+
+## VM Configuration
+
+- Hypervisor: VMware Workstation Pro
+- VM Name: soc-server
+- Operating System: Ubuntu Server 22.04.5 LTS
+- RAM: 8 GB
+- CPU: 4 vCPU
+- Disk: 100 GB
+- Network: NAT
+
+## Static Network Configuration
+
+- Interface: ens33
+- IP Address: 192.168.10.132/24
+- Gateway: 192.168.10.2
+- DNS:
+  - 8.8.8.8
+  - 1.1.1.1
+
+## Verification
+
+Commands used:
+
+```bash
+hostnamectl
+ip a
+ip route
+ping -c 4 8.8.8.8
+ping -c 4 google.com
+```
+
+## Status
+
+Completed
