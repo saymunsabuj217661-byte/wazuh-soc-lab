@@ -558,3 +558,64 @@ The installation assistant displayed the available deployment options successful
 ## Status
 
 ✅ Wazuh Installation Assistant downloaded and verified successfully.
+
+# Phase 6 – Install Wazuh All-in-One
+
+## Objective
+
+Install the Wazuh platform (Indexer, Manager, Filebeat, and Dashboard) on a single Ubuntu Server.
+
+---
+
+## Step 1: Start Installation
+
+### Command
+
+```bash
+cd ~
+
+sudo bash ./wazuh-install.sh -a
+```
+
+### Result
+
+The Wazuh installation assistant started the automatic deployment process.
+
+### Screenshot
+
+![Start Installation](../screenshots/phase-06/01-start-wazuh-installation.png)
+
+---
+
+## Step 2: Installation Progress
+
+The installation assistant automatically installed:
+
+- Wazuh Indexer
+- Wazuh Manager
+- Filebeat
+- Wazuh Dashboard
+- SSL Certificates
+- Security Configuration
+
+### Screenshot
+
+![Installation Progress](../screenshots/phase-06/02-installation-progress.png)
+
+---
+
+## Step 3: Installation Completed
+
+### Result
+
+The installation completed successfully, and the installer displayed the Wazuh Dashboard URL and default administrator credentials.
+
+### Screenshot
+
+![Installation Completed](../screenshots/phase-06/03-installation-complete.png)
+
+---
+
+## Status
+
+✅ Wazuh platform installed successfully.
