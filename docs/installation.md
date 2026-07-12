@@ -257,3 +257,65 @@ sudo systemctl is-enabled rsyslog
 ![Rsyslog Status](../screenshots/phase-03/02-rsyslog-status.png)
 
 ![Rsyslog Enabled](../screenshots/phase-03/03-rsyslog-enabled.png)
+
+
+## Step 2: Backup Rsyslog Configuration
+
+Before making any configuration changes, a backup of the original `rsyslog.conf` file was created.
+
+### Command
+
+```bash
+sudo cp /etc/rsyslog.conf /etc/rsyslog.conf.backup
+ls -l /etc/rsyslog.conf*
+```
+
+### Result
+
+- Backup file created successfully.
+- Original configuration remains unchanged.
+- Backup can be restored if needed.
+
+### Screenshot
+
+![Rsyslog Backup](../screenshots/phase-03/04-rsyslog-backup.png)
+
+## Step 3: Enable Remote Syslog Reception
+
+The Rsyslog server was configured to receive remote logs using UDP and TCP protocols on port 514.
+
+### Configuration
+
+Enabled modules:
+
+```conf
+module(load="imudp")
+input(type="imudp" port="514")
+
+module(load="imtcp")
+input(type="imtcp" port="514")
+```
+
+### Verification
+
+```bash
+grep -E "imudp|imtcp|514" /etc/rsyslog.conf
+
+sudo systemctl restart rsyslog
+
+sudo ss -tulnp | grep 514
+```
+
+### Expected Result
+
+- UDP port 514 is listening.
+- TCP port 514 is listening.
+- Rsyslog service is active.
+
+### Screenshots
+
+![Rsyslog UDP TCP Configuration](../screenshots/phase-03/05-rsyslog-udp-tcp-enabled.png)
+
+![Rsyslog Restart Status](../screenshots/phase-03/06-rsyslog-status-after-restart.png)
+
+![Port 514 Listening](../screenshots/phase-03/07-port-514-listening.png)
