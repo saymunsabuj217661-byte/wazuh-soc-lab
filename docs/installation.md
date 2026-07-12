@@ -377,3 +377,96 @@ sudo find /var/log/remote -type f
 ![Rsyslog Final Status](../screenshots/phase-03/09-rsyslog-status-final.png)
 
 ![Remote Log Test](../screenshots/phase-03/10-remote-log-test.png)
+
+
+# Phase 4 - Wazuh Installation Preparation
+
+## Objective
+
+Prepare the Ubuntu Server environment before installing the Wazuh components.
+
+---
+
+## Step 1: Verify System Requirements
+
+Before installing Wazuh, verify that the server meets the minimum hardware requirements.
+
+### Commands
+
+```bash
+hostnamectl
+
+free -h
+
+nproc
+
+df -h /
+```
+
+### Verification
+
+- Operating System: Ubuntu Server 22.04.5 LTS
+- Hostname verified.
+- RAM: 8 GB
+- CPU: 4 vCPU
+- Root Filesystem: 97 GB
+
+### Screenshot
+
+![System Prerequisites](../screenshots/phase-04/01-system-prerequisites.png)
+
+---
+
+## Step 2: Update Ubuntu Packages
+
+Update the package index and ensure the operating system is fully updated.
+
+### Commands
+
+```bash
+sudo apt update
+
+sudo apt upgrade -y
+```
+
+### Result
+
+- Package index updated successfully.
+- No pending package upgrades.
+
+### Screenshot
+
+![APT Update and Upgrade](../screenshots/phase-04/02-apt-update-upgrade.png)
+
+---
+
+## Step 3: Verify Existing Rsyslog Configuration
+
+Since the centralized rsyslog server was configured in Phase 3, verify that the service is still working correctly after the system update.
+
+### Commands
+
+```bash
+sudo systemctl status rsyslog
+
+sudo ss -tulnp | grep 514
+```
+
+### Expected Result
+
+- rsyslog service is active (running).
+- UDP port 514 is listening.
+- TCP port 514 is listening.
+- Previous rsyslog configuration remains unchanged.
+
+### Screenshot
+
+![Rsyslog Verification](../screenshots/phase-04/03-rsyslog-verification.png)
+
+---
+
+## Status
+
+✅ Ubuntu Server is fully prepared for Wazuh installation.
+
+The operating system has been updated successfully and the existing centralized rsyslog configuration remains operational.
