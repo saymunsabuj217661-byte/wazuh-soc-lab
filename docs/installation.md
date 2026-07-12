@@ -214,7 +214,7 @@ Completed
 
 ![VM Settings](../screenshots/phase-02/01-vm-settings.png)
 
-### 2. Network Configuration (IP Address & Routing)
+### 2. Network Configuration
 
 ![Network Configuration](../screenshots/phase-02/02-network-configuration.png)
 
