@@ -619,3 +619,167 @@ The installation completed successfully, and the installer displayed the Wazuh D
 ## Status
 
 ✅ Wazuh platform installed successfully.
+# Phase 7 – Verify Wazuh Installation
+
+## Objective
+
+Verify that all Wazuh components were installed successfully and are running properly.
+
+---
+
+## Step 1: Verify Wazuh Manager
+
+### Command
+
+```bash
+sudo systemctl status wazuh-manager
+```
+
+### Expected Result
+
+- Wazuh Manager service is active (running).
+
+### Screenshot
+
+![Wazuh Manager Status](../screenshots/phase-07/01-wazuh-manager-status.png)
+
+---
+
+## Step 2: Verify Wazuh Indexer
+
+### Command
+
+```bash
+sudo systemctl status wazuh-indexer
+```
+
+### Expected Result
+
+- Wazuh Indexer service is active (running).
+
+### Screenshot
+
+![Wazuh Indexer Status](../screenshots/phase-07/02-wazuh-indexer-status.png)
+
+---
+
+## Step 3: Verify Filebeat
+
+### Command
+
+```bash
+sudo systemctl status filebeat
+```
+
+### Expected Result
+
+- Filebeat service is active (running).
+
+### Screenshot
+
+![Filebeat Status](../screenshots/phase-07/03-filebeat-status.png)
+
+---
+
+## Step 4: Verify Wazuh Dashboard
+
+### Command
+
+```bash
+sudo systemctl status wazuh-dashboard
+```
+
+### Expected Result
+
+- Wazuh Dashboard service is active (running).
+
+### Screenshot
+
+![Wazuh Dashboard Status](../screenshots/phase-07/04-wazuh-dashboard-status.png)
+
+---
+
+## Step 5: Verify Listening Ports
+
+### Command
+
+```bash
+sudo ss -tulnp | grep -E '1514|1515|514|55000|9200|443'
+```
+
+### Expected Result
+
+The following ports should be listening:
+
+| Port | Service |
+|------|---------|
+| 514 | Rsyslog |
+| 1514 | Wazuh Agent Communication |
+| 1515 | Wazuh Agent Registration |
+| 55000 | Wazuh API |
+| 9200 | Wazuh Indexer |
+| 443 | Wazuh Dashboard |
+
+### Screenshot
+
+![Listening Ports](../screenshots/phase-07/05-listening-ports.png)
+
+---
+
+## Step 6: Verify Dashboard Login
+
+Open a web browser and access:
+
+```
+https://<SERVER-IP>
+```
+
+Login using:
+
+- Username: `admin`
+- Password: Generated during installation
+
+### Expected Result
+
+The Wazuh Dashboard login page should load successfully.
+
+### Screenshot
+
+![Dashboard Login](../screenshots/phase-07/06-dashboard-login.png)
+
+---
+
+## Step 7: Verify Installed Wazuh Services
+
+### Command
+
+```bash
+sudo systemctl --type=service | grep wazuh
+```
+
+### Expected Result
+
+The installed Wazuh services should be displayed.
+
+### Screenshot
+
+![Installed Wazuh Services](../screenshots/phase-07/07-installed-services.png)
+
+---
+
+## Verification Summary
+
+| Component | Status |
+|-----------|--------|
+| Wazuh Manager | Running |
+| Wazuh Indexer | Running |
+| Filebeat | Running |
+| Wazuh Dashboard | Running |
+| Required Ports | Listening |
+| Dashboard Access | Successful |
+
+---
+
+## Status
+
+✅ Wazuh installation verified successfully.
