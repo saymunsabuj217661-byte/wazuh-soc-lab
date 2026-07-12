@@ -225,3 +225,35 @@ Completed
 ### 4. System Information
 
 ![System Information](../screenshots/phase-02/04-system-information.png)
+
+
+# Phase 3 – Centralized Rsyslog Installation
+
+## Objective
+
+Install and verify the Rsyslog service to prepare the Ubuntu server for centralized log collection.
+
+## Commands
+
+```bash
+sudo apt update
+sudo apt install rsyslog -y
+rsyslogd -v
+sudo systemctl status rsyslog
+sudo systemctl enable rsyslog
+sudo systemctl is-enabled rsyslog
+```
+
+## Expected Result
+
+- rsyslog installed successfully.
+- Service status: active (running).
+- Service enabled at boot.
+
+## Screenshots
+
+![Rsyslog Version](../screenshots/phase-03/01-rsyslog-version.png)
+
+![Rsyslog Status](../screenshots/phase-03/02-rsyslog-status.png)
+
+![Rsyslog Enabled](../screenshots/phase-03/03-rsyslog-enabled.png)
