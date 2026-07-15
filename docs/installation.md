@@ -1097,7 +1097,7 @@ Expected Output
 
 ### Screenshot
 
-![Ubuntu Agent Connected](images/00-agent-connected.png)
+![Ubuntu Agent Connected](../screenshots/phase-10/00-agent-connected.png)
 
 ---
 
@@ -1117,7 +1117,7 @@ The Ubuntu agent monitors authentication logs and forwards them to the Wazuh Man
 
 ### Screenshot
 
-![Authentication Alert](images/01-authentication-alert.png)
+![Authentication Alert](../screenshots/phase-10/01-authentication-alert.png)
 
 ---
 
@@ -1139,7 +1139,7 @@ Verify the alert includes:
 
 ### Screenshot
 
-![Authentication Alert Details](images/02-alert-details.png)
+![Authentication Alert Details](../screenshots/phase-10/02-alert-details.png)
 
 ---
 
@@ -1165,7 +1165,7 @@ Syscheck detects the modification and sends the event to the Wazuh Manager.
 
 ### Screenshot
 
-![FIM Alert](images/03-fim-alert.png)
+![FIM Alert](../screenshots/phase-10/03-fim-alert.png)
 
 ---
 
@@ -1189,7 +1189,7 @@ The Ubuntu Agent forwards the sudo activity to the Wazuh Manager.
 
 ### Screenshot
 
-![Sudo Event](images/04-sudo-event.png)
+![Sudo Event](../screenshots/phase-10/04-sudo-event.png)
 
 ---
 
@@ -1206,7 +1206,7 @@ Verify the event contains:
 
 ### Screenshot
 
-![Sudo Alert Details](images/05-alert-details.png)
+![Sudo Alert Details](../screenshots/phase-10/05-alert-details.png)
 
 ---
 
@@ -1225,7 +1225,7 @@ Typical mappings include:
 
 ### Screenshot
 
-![MITRE ATT&CK Mapping](images/06-mitre-mapping.png)
+![MITRE ATT&CK Mapping](../screenshots/phase-10/06-mitre-mapping.png)
 
 ---
 
