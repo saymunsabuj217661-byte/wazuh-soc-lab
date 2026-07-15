@@ -1049,25 +1049,207 @@ sudo systemctl status wazuh-agent
 
 ## Objective
 
-Generate security events on the Ubuntu Wazuh Agent and verify that Wazuh successfully collects, analyzes, and displays alerts through the Wazuh Dashboard.
+The objective of this phase is to verify that the Ubuntu Wazuh Agent can successfully generate security events and that the Wazuh Manager collects, analyzes, and displays those events in the Wazuh Dashboard.
+
+This phase validates the communication between the Ubuntu agent and the Wazuh Manager while demonstrating the detection of authentication events, file integrity monitoring (FIM) events, and sudo command execution.
 
 ---
 
-# Environment
+# Lab Environment
 
-- Wazuh Server: Ubuntu Server 22.04 LTS
-- Wazuh Version: 4.14.6
-- Agent Operating System: Ubuntu Desktop 22.04 LTS
-- Agent Name: ubuntu-agent
-- Communication: Agent → Wazuh Manager
+| Component | Details |
+|-----------|---------|
+| SIEM Platform | Wazuh |
+| Wazuh Version | 4.14.6 |
+| Server OS | Ubuntu Server 22.04 LTS |
+| Agent OS | Ubuntu Desktop 22.04 LTS |
+| Agent Name | ubuntu-agent |
+| Monitoring Types | Authentication Monitoring, File Integrity Monitoring (FIM), Sudo Command Monitoring |
 
 ---
 
-# Step 1: Verify Agent Connection
+# Prerequisites
 
-Before generating security events, the Wazuh Agent connection was verified.
+- Wazuh Manager installed and operational.
+- Ubuntu Agent successfully installed.
+- Agent registered with the Wazuh Manager.
+- Wazuh Dashboard accessible.
+- File Integrity Monitoring (Syscheck) enabled.
+- Agent connected and active.
 
-Command:
+---
+
+# Step 1 – Verify Ubuntu Agent Status
+
+Verify that the Ubuntu Wazuh Agent service is running.
+
+### Command
 
 ```bash
 sudo systemctl status wazuh-agent
+```
+
+Expected Output
+
+- Active (running)
+- Connected to the Wazuh Manager
+- No service errors
+
+### Screenshot
+
+![Ubuntu Agent Connected](images/00-agent-connected.png)
+
+---
+
+# Step 2 – Generate Authentication Event
+
+Generate a failed authentication attempt by entering an incorrect password.
+
+Example:
+
+```bash
+su root
+```
+
+Enter an incorrect password several times.
+
+The Ubuntu agent monitors authentication logs and forwards them to the Wazuh Manager.
+
+### Screenshot
+
+![Authentication Alert](images/01-authentication-alert.png)
+
+---
+
+# Step 3 – Review Authentication Alert Details
+
+Open:
+
+Dashboard → Security Events
+
+Verify the alert includes:
+
+- Rule ID
+- Agent Name
+- Source IP
+- Username
+- Event Time
+- Severity Level
+- Decoder Information
+
+### Screenshot
+
+![Authentication Alert Details](images/02-alert-details.png)
+
+---
+
+# Step 4 – Generate File Integrity Monitoring (FIM) Event
+
+Modify a monitored file.
+
+Example:
+
+```bash
+echo "Wazuh FIM Test" >> ~/test.txt
+```
+
+or
+
+```bash
+nano ~/test.txt
+```
+
+Save the file.
+
+Syscheck detects the modification and sends the event to the Wazuh Manager.
+
+### Screenshot
+
+![FIM Alert](images/03-fim-alert.png)
+
+---
+
+# Step 5 – Generate Sudo Event
+
+Execute a privileged command.
+
+Example
+
+```bash
+sudo apt update
+```
+
+or
+
+```bash
+sudo ls /root
+```
+
+The Ubuntu Agent forwards the sudo activity to the Wazuh Manager.
+
+### Screenshot
+
+![Sudo Event](images/04-sudo-event.png)
+
+---
+
+# Step 6 – Review Sudo Alert Details
+
+Verify the event contains:
+
+- User
+- Host
+- Command Executed
+- Rule Description
+- Severity Level
+- Timestamp
+
+### Screenshot
+
+![Sudo Alert Details](images/05-alert-details.png)
+
+---
+
+# Step 7 – Verify MITRE ATT&CK Mapping
+
+Open the event details.
+
+Confirm that Wazuh automatically maps the detected event to the MITRE ATT&CK framework.
+
+Typical mappings include:
+
+- Initial Access
+- Privilege Escalation
+- Persistence
+- Defense Evasion
+
+### Screenshot
+
+![MITRE ATT&CK Mapping](images/06-mitre-mapping.png)
+
+---
+
+# Verification Summary
+
+| Verification | Status |
+|--------------|--------|
+| Ubuntu Agent Running | ✅ Verified |
+| Agent Connected to Manager | ✅ Verified |
+| Authentication Alert Generated | ✅ Verified |
+| Authentication Alert Received | ✅ Verified |
+| FIM Event Generated | ✅ Verified |
+| FIM Alert Received | ✅ Verified |
+| Sudo Event Generated | ✅ Verified |
+| Sudo Alert Received | ✅ Verified |
+| MITRE ATT&CK Mapping Verified | ✅ Verified |
+
+---
+
+# Security Events Observed
+
+- Failed Login Detection
+- Authentication Monitoring
+- File Modification Detection
+- Sudo Command Execution
+- Security Rule Matching
+- MITRE ATT&CK Mapping
