@@ -1044,3 +1044,30 @@ sudo systemctl status wazuh-agent
 # Status
 
 ✅ Completed
+
+# Phase 10 – Ubuntu Agent Security Event Monitoring and Alert Verification
+
+## Objective
+
+Generate security events on the Ubuntu Wazuh Agent and verify that Wazuh successfully collects, analyzes, and displays alerts through the Wazuh Dashboard.
+
+---
+
+# Environment
+
+- Wazuh Server: Ubuntu Server 22.04 LTS
+- Wazuh Version: 4.14.6
+- Agent Operating System: Ubuntu Desktop 22.04 LTS
+- Agent Name: ubuntu-agent
+- Communication: Agent → Wazuh Manager
+
+---
+
+# Step 1: Verify Agent Connection
+
+Before generating security events, the Wazuh Agent connection was verified.
+
+Command:
+
+```bash
+sudo systemctl status wazuh-agent
