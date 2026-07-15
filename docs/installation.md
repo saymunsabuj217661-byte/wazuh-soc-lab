@@ -783,3 +783,91 @@ The installed Wazuh services should be displayed.
 ## Status
 
 ✅ Wazuh installation verified successfully.
+
+# Phase 8 – Ubuntu Desktop Agent Preparation
+
+## Objective
+
+Prepare an Ubuntu Desktop virtual machine to act as a Wazuh Agent by verifying network connectivity, system configuration, and operating system readiness.
+
+---
+
+## VM Configuration
+
+- Hypervisor: VMware Workstation Pro
+- VM Name: ubuntu-agent
+- Operating System: Ubuntu Desktop 22.04 LTS
+- RAM: 4 GB
+- CPU: 2 vCPU
+- Disk: 20 GB
+- Network: NAT
+
+---
+
+## Verification Commands
+
+```bash
+hostnamectl
+ip a
+ip route
+ping -c 4 google.com
+ping -c 4 192.168.10.132
+sudo apt update
+sudo apt upgrade -y
+free -h
+nproc
+df -h
+```
+
+---
+
+## Verification Results
+
+- Ubuntu Desktop installed successfully.
+- Network connectivity verified.
+- Internet connectivity verified.
+- Communication with the Wazuh server verified.
+- System updated successfully.
+- System resources verified.
+
+---
+
+## Screenshots
+
+### 1. System Information
+
+![System Information](../screenshots/phase-08/01-system-information.png)
+
+### 2. IP Address
+
+![IP Address](../screenshots/phase-08/02-ip-address.png)
+
+### 3. Routing Table
+
+![Routing Table](../screenshots/phase-08/03-routing-table.png)
+
+### 4. Internet Connectivity
+
+![Internet Connectivity](../screenshots/phase-08/04-internet-connectivity.png)
+
+### 5. Wazuh Server Connectivity
+
+![Server Connectivity](../screenshots/phase-08/05-server-connectivity.png)
+
+### 6. System Update
+
+![System Update](../screenshots/phase-08/06-system-update.png)
+
+### 7. Hostname Verification
+
+![Hostname](../screenshots/phase-08/07-hostname.png)
+
+### 8. System Resources
+
+![System Resources](../screenshots/phase-08/08-system-resources.png)
+
+---
+
+## Status
+
+✅ Ubuntu Desktop agent machine prepared successfully.
